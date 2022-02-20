@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+protocol CardViewDelegate: AnyObject {
+    func didTapCardView(_ cardView: CardView, image: UIImage?)
+}
+
 final class CardView: UIView {
     
     private let imageView: UIImageView = {
@@ -15,6 +19,8 @@ final class CardView: UIView {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
+    
+    weak var delegate: CardViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,6 +40,13 @@ final class CardView: UIView {
             in: self,
             withInsets: UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         )
+        
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapView(_:))))
+    }
+    
+    @objc
+    private func didTapView(_ sender: Any) {
+        delegate?.didTapCardView(self, image: imageView.image)
     }
     
     func loading() {

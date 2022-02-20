@@ -23,6 +23,12 @@ extension UIView {
 }
 
 final class ButtonUtils {
+    static func shareButton(withTitle title: String, textColor: UIColor, backgroundColor: UIColor) -> UIButton {
+        let button = standardButton(withTitle: title, textColor: textColor, backgroundColor: backgroundColor)
+        button.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
+        button.imageView?.tintColor = .primaryBeige
+        return button
+    }
     
     static func standardButton(withTitle title: String, textColor: UIColor, backgroundColor: UIColor) -> UIButton {
         let button = UIButton(type: .custom)
@@ -32,5 +38,17 @@ final class ButtonUtils {
         button.backgroundColor = backgroundColor
         button.layer.cornerRadius = 8
         return button
+    }
+}
+
+extension UITableViewCell {
+    static func register(in tableView: UITableView) {
+        tableView.register(self, forCellReuseIdentifier: NSStringFromClass(self))
+    }
+}
+
+extension UITableView {
+    func dequeue<Cell: UITableViewCell>(type: Cell.Type, for indexPath: IndexPath) -> Cell {
+        return dequeueReusableCell(withIdentifier: NSStringFromClass(type), for: indexPath) as! Cell
     }
 }

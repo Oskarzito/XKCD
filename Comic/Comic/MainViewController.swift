@@ -25,10 +25,11 @@ final class MainViewController: UIViewController {
         return spinner
     }()
     
-    private let cardView: CardView = {
+    private lazy var cardView: CardView = {
         let cardView = CardView()
         cardView.translatesAutoresizingMaskIntoConstraints = false
         cardView.isHidden = true
+        cardView.delegate = self
         return cardView
     }()
     
@@ -130,7 +131,6 @@ final class MainViewController: UIViewController {
                 case .uninitiated:
                     break //do nothing
                 }
-                
             }
             .store(in: &observers)
     }
@@ -152,7 +152,7 @@ final class MainViewController: UIViewController {
         loadingOverlayView.isHidden = false
     }
     
-    private func showComic(_ comic: MainViewModel.ComicResponse, _ fromState: MainViewModel.ViewState) {
+    private func showComic(_ comic: Comic, _ fromState: MainViewModel.ViewState) {
         cardView.isHidden = false
         titleLabel.isHidden = false
         buttonStack.isHidden = false
@@ -192,3 +192,15 @@ final class MainViewController: UIViewController {
     }
 }
 
+extension MainViewController: CardViewDelegate {
+    func didTapCardView(_ cardView: CardView, image: UIImage?) {
+        guard let currentComic = viewModel.currentComic,
+              let image = image else {
+            return
+        }
+        let vc = ComicDetailsViewController().inject(with: currentComic, image: image)
+        let navVc = UINavigationController(rootViewController: vc)
+    
+        present(navVc, animated: true, completion: nil)
+    }
+}

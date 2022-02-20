@@ -28,7 +28,7 @@ final class MainViewModel {
         case uninitiated
         case initialLaunch
         case loading
-        case didFinishLoading(with: ComicResponse, fromState: ViewState)
+        case didFinishLoading(with: Comic, fromState: ViewState)
         case error
     }
     
@@ -37,6 +37,7 @@ final class MainViewModel {
     @Published private(set) var viewState: ViewState = .uninitiated
     
     private var comicIds: Set<Int> = []
+    private(set) var currentComic: Comic?
     
     func start() {
         viewState = .initialLaunch
@@ -82,7 +83,8 @@ final class MainViewModel {
                 }
             } receiveValue: { response in
                 print("response: \(response)")
-                self.viewState = .didFinishLoading(with: response, fromState: self.viewState)
+                self.currentComic = response.toComic()
+                self.viewState = .didFinishLoading(with: self.currentComic!, fromState: self.viewState)
             }
             .store(in: &cancellables)
     }
@@ -94,5 +96,24 @@ final class MainViewModel {
     
     func didTapPrevious() {
         
+    }
+}
+
+extension MainViewModel.ComicResponse {
+    func toComic() -> Comic {
+        return Comic(
+            month: month,
+            num: num,
+            link: link,
+            year: year,
+            news: news,
+            safe_title: safe_title,
+            transcript: transcript,
+            alt: alt,
+            img: img,
+            title: title,
+            day: day,
+            explanationUrl: "https://www.explainxkcd.com/wiki/index.php/\(num)"
+        )
     }
 }

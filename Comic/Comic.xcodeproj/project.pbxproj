@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E82FCD3D27C1901100E42468 /* ComicDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82FCD3C27C1901100E42468 /* ComicDetailsViewController.swift */; };
+		E82FCD4027C190E200E42468 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82FCD3F27C190E200E42468 /* Comic.swift */; };
+		E82FCD4227C1AE6000E42468 /* ComicDetailsImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82FCD4127C1AE6000E42468 /* ComicDetailsImageTableViewCell.swift */; };
+		E82FCD4427C1C07900E42468 /* ComicDetailsTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82FCD4327C1C07900E42468 /* ComicDetailsTextTableViewCell.swift */; };
+		E82FCD4627C1D2ED00E42468 /* ComicDetailsButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82FCD4527C1D2ED00E42468 /* ComicDetailsButtonTableViewCell.swift */; };
 		E86BE29927B0526E0077129B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86BE29827B0526E0077129B /* AppDelegate.swift */; };
 		E86BE29B27B0526E0077129B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86BE29A27B0526E0077129B /* SceneDelegate.swift */; };
 		E86BE29D27B0526E0077129B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86BE29C27B0526E0077129B /* MainViewController.swift */; };
@@ -42,6 +47,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E82FCD3C27C1901100E42468 /* ComicDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailsViewController.swift; sourceTree = "<group>"; };
+		E82FCD3F27C190E200E42468 /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
+		E82FCD4127C1AE6000E42468 /* ComicDetailsImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailsImageTableViewCell.swift; sourceTree = "<group>"; };
+		E82FCD4327C1C07900E42468 /* ComicDetailsTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailsTextTableViewCell.swift; sourceTree = "<group>"; };
+		E82FCD4527C1D2ED00E42468 /* ComicDetailsButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailsButtonTableViewCell.swift; sourceTree = "<group>"; };
 		E86BE29527B0526E0077129B /* Comic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E86BE29827B0526E0077129B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E86BE29A27B0526E0077129B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +98,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E82FCD3B27C18FF900E42468 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				E82FCD3C27C1901100E42468 /* ComicDetailsViewController.swift */,
+				E82FCD4127C1AE6000E42468 /* ComicDetailsImageTableViewCell.swift */,
+				E82FCD4327C1C07900E42468 /* ComicDetailsTextTableViewCell.swift */,
+				E82FCD4527C1D2ED00E42468 /* ComicDetailsButtonTableViewCell.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		E82FCD3E27C190D000E42468 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				E82FCD3F27C190E200E42468 /* Comic.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		E86BE28C27B0526E0077129B = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +140,8 @@
 		E86BE29727B0526E0077129B /* Comic */ = {
 			isa = PBXGroup;
 			children = (
+				E82FCD3E27C190D000E42468 /* Domain */,
+				E82FCD3B27C18FF900E42468 /* Details */,
 				E894355E27B993B90091CD5E /* UI */,
 				E894355A27B96D420091CD5E /* Color */,
 				E86BE29827B0526E0077129B /* AppDelegate.swift */,
@@ -294,13 +325,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				E86BE29D27B0526E0077129B /* MainViewController.swift in Sources */,
+				E82FCD4627C1D2ED00E42468 /* ComicDetailsButtonTableViewCell.swift in Sources */,
 				E86BE29927B0526E0077129B /* AppDelegate.swift in Sources */,
 				E894355C27B96E870091CD5E /* Color.swift in Sources */,
 				E86BE29B27B0526E0077129B /* SceneDelegate.swift in Sources */,
 				E86BE2C927B055CC0077129B /* MainViewModel.swift in Sources */,
 				E894355527B967FA0091CD5E /* API.swift in Sources */,
 				E894356027B993DB0091CD5E /* CardView.swift in Sources */,
+				E82FCD4427C1C07900E42468 /* ComicDetailsTextTableViewCell.swift in Sources */,
+				E82FCD4027C190E200E42468 /* Comic.swift in Sources */,
 				E894355727B968860091CD5E /* Utils.swift in Sources */,
+				E82FCD4227C1AE6000E42468 /* ComicDetailsImageTableViewCell.swift in Sources */,
+				E82FCD3D27C1901100E42468 /* ComicDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

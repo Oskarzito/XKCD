@@ -27,6 +27,7 @@
 		E894355C27B96E870091CD5E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894355B27B96E870091CD5E /* Color.swift */; };
 		E894355D27B971F30091CD5E /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E894355827B96D380091CD5E /* Color.xcassets */; };
 		E894356027B993DB0091CD5E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894355F27B993DB0091CD5E /* CardView.swift */; };
+		E8A3DA1027C3FD260092DE94 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A3DA0F27C3FD260092DE94 /* Strings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +58,7 @@
 		E86BE29A27B0526E0077129B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E86BE29C27B0526E0077129B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E86BE29F27B0526E0077129B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E86BE2A127B052700077129B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E86BE2A127B052700077129B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Comic/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		E86BE2A427B052700077129B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E86BE2A627B052700077129B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E86BE2AB27B052700077129B /* ComicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +72,7 @@
 		E894355827B96D380091CD5E /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		E894355B27B96E870091CD5E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		E894355F27B993DB0091CD5E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		E8A3DA0F27C3FD260092DE94 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 			children = (
 				E894355627B968860091CD5E /* Utils.swift */,
 				E894355F27B993DB0091CD5E /* CardView.swift */,
+				E8A3DA0F27C3FD260092DE94 /* Strings.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				E894355C27B96E870091CD5E /* Color.swift in Sources */,
 				E86BE29B27B0526E0077129B /* SceneDelegate.swift in Sources */,
 				E86BE2C927B055CC0077129B /* MainViewModel.swift in Sources */,
+				E8A3DA1027C3FD260092DE94 /* Strings.swift in Sources */,
 				E894355527B967FA0091CD5E /* API.swift in Sources */,
 				E894356027B993DB0091CD5E /* CardView.swift in Sources */,
 				E82FCD4427C1C07900E42468 /* ComicDetailsTextTableViewCell.swift in Sources */,
@@ -513,6 +517,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9JG3D6BYC9;
@@ -541,6 +546,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9JG3D6BYC9;

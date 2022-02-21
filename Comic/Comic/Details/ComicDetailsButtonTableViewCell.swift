@@ -26,11 +26,11 @@ final class ComicDetailsButtonTableViewCell: UITableViewCell {
     }()
     
     private let shareButton: UIButton = {
-        return ButtonUtils.shareButton(withTitle: "Share", textColor: .primaryBeige, backgroundColor: .primaryTeal)
+        return ButtonUtils.shareButton(withTitle: String(.generalShare), textColor: .primaryBeige, backgroundColor: .primaryTeal)
     }()
     
     private let explanationButton: UIButton = {
-        return ButtonUtils.standardButton(withTitle: "Explanation?", textColor: .primaryBeige, backgroundColor: .primaryTeal)
+        return ButtonUtils.standardButton(withTitle: String(.generalExplanation), textColor: .primaryBeige, backgroundColor: .primaryTeal)
     }()
     
     let actions = PassthroughSubject<ButtonEvent, Never>()

@@ -14,7 +14,6 @@ final class ComicDetailsViewController: UIViewController {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .primaryNavy
-        tableView.delegate = self
         tableView.dataSource = self
         ComicDetailsImageTableViewCell.register(in: tableView)
         ComicDetailsTextTableViewCell.register(in: tableView)
@@ -46,7 +45,7 @@ final class ComicDetailsViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .primaryBeige
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.primaryBeige]
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(didTapClose(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: String(.generalClose), style: .plain, target: self, action: #selector(didTapClose(_:)))
         
         tableView.align(in: view)
         navigationItem.title = comic.safe_title
@@ -58,8 +57,10 @@ final class ComicDetailsViewController: UIViewController {
     }
     
     private func shareComic() {
-        let ac = UIActivityViewController(activityItems: [comicImage!], applicationActivities: nil)
-        present(ac, animated: true)
+        guard let comicImage = comicImage else {
+            return
+        }
+        presentShareActivity(for: comicImage)
     }
     
     private func openComicExplanation() {
@@ -105,7 +106,4 @@ extension ComicDetailsViewController: UITableViewDataSource {
             fatalError()
         }
     }
-}
-
-extension ComicDetailsViewController: UITableViewDelegate {
 }

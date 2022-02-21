@@ -94,11 +94,14 @@ final class MainViewModel {
         fetchComic(withId: findNextComicId())
     }
     
-    func didTapPrevious() {
-        
+    func didTapSearch(withId id: Int) {
+        viewState = .loading
+        fetchComic(withId: id)
     }
 }
 
+// Makes a distinction between network
+// response objects and app domain objects
 extension MainViewModel.ComicResponse {
     func toComic() -> Comic {
         return Comic(

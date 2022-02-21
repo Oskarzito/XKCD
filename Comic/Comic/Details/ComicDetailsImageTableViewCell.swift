@@ -10,9 +10,9 @@ import UIKit
 final class ComicDetailsImageTableViewCell: UITableViewCell {
     
     private let comicImageView: UIImageView = {
-       let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
+       let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

@@ -45,8 +45,19 @@ final class MainViewController: UIViewController {
         return label
     }()
     
+    private let comicIdTextField: UITextField = {
+       let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.backgroundColor = .primaryTeal
+        textField.textColor = .primaryBeige
+        textField.textAlignment = .center
+        textField.layer.cornerRadius = 8
+        textField.keyboardType = .numberPad
+        return textField
+    }()
+    
     private lazy var buttonStack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [previousButton, nextButton])
+        let stackView = UIStackView(arrangedSubviews: [shareButton, nextButton])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
@@ -55,12 +66,12 @@ final class MainViewController: UIViewController {
         return stackView
     }()
     
-    private let previousButton: UIButton = {
-        return ButtonUtils.standardButton(withTitle: "< Previous", textColor: .primaryBeige, backgroundColor: .primaryTeal)
+    private let shareButton: UIButton = {
+        return ButtonUtils.shareButton(withTitle: String(.generalShare), textColor: .primaryBeige, backgroundColor: .primaryTeal)
     }()
 
     private let nextButton: UIButton = {
-        return ButtonUtils.standardButton(withTitle: "Next >", textColor: .primaryBeige, backgroundColor: .primaryTeal)
+        return ButtonUtils.standardButton(withTitle: "\(String(.generalNext)) >", textColor: .primaryBeige, backgroundColor: .primaryTeal)
     }()
     
     private let viewModel = MainViewModel()
@@ -76,8 +87,9 @@ final class MainViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .primaryNavy
-        view.addSubview(cardView)
         view.addSubview(titleLabel)
+        view.addSubview(cardView)
+        view.addSubview(comicIdTextField)
         view.addSubview(buttonStack)
         
         NSLayoutConstraint.activate([
@@ -92,13 +104,43 @@ final class MainViewController: UIViewController {
             titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: cardView.trailingAnchor, constant: -8),
             titleLabel.centerXAnchor.constraint(equalTo: cardView.centerXAnchor),
             
-            buttonStack.topAnchor.constraint(equalTo: cardView.bottomAnchor, constant: 24),
+            comicIdTextField.topAnchor.constraint(equalTo: cardView.bottomAnchor, constant: 16),
+            comicIdTextField.widthAnchor.constraint(equalToConstant: 56),
+            comicIdTextField.centerXAnchor.constraint(equalTo: cardView.centerXAnchor),
+            comicIdTextField.heightAnchor.constraint(equalToConstant: 24),
+            
+            buttonStack.topAnchor.constraint(equalTo: comicIdTextField.bottomAnchor, constant: 24),
             buttonStack.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 8),
             buttonStack.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -8),
         ])
         
-        previousButton.addTarget(self, action: #selector(didTapPrevious(_:)), for: .touchUpInside)
+        shareButton.addTarget(self, action: #selector(didTapShare(_:)), for: .touchUpInside)
         nextButton.addTarget(self, action: #selector(didTapNext(_:)), for: .touchUpInside)
+        
+        let numberPadToolbar: UIToolbar = UIToolbar()
+        
+        numberPadToolbar.items=[
+            UIBarButtonItem(
+                title: String(.generalCancel),
+                style: .plain,
+                target: self,
+                action: #selector(didTapCancel(_:))
+            ),
+            UIBarButtonItem(
+                barButtonSystemItem: .flexibleSpace,
+                target: self,
+                action: nil
+            ),
+            UIBarButtonItem(
+                title: String(.generalSearch),
+                style: .plain,
+                target: self,
+                action: #selector(didTapSearch(_:))
+            )
+        ]
+
+        numberPadToolbar.sizeToFit()
+        comicIdTextField.inputAccessoryView = numberPadToolbar
     }
     
     @objc
@@ -107,8 +149,31 @@ final class MainViewController: UIViewController {
     }
     
     @objc
-    private func didTapPrevious(_ sender: UIButton) {
-        viewModel.didTapPrevious()
+    private func didTapShare(_ sender: UIButton) {
+        guard let currentComicImage = cardView.imageView.image else {
+            return
+        }
+        presentShareActivity(for: currentComicImage)
+    }
+    
+    @objc
+    private func didTapSearch(_ sender: Any) {
+        guard var id = Int(comicIdTextField.text ?? "") else {
+            return
+        }
+        
+        if id > 2000 {
+            id = 2000
+        } else if id <= 0 {
+            id = 1
+        }
+        comicIdTextField.resignFirstResponder()
+        viewModel.didTapSearch(withId: id)
+    }
+    
+    @objc
+    private func didTapCancel(_ sender: Any) {
+        comicIdTextField.resignFirstResponder()
     }
     
     private func observeViewState() {
@@ -158,6 +223,7 @@ final class MainViewController: UIViewController {
         buttonStack.isHidden = false
         
         titleLabel.text = comic.title
+        comicIdTextField.text = "\(comic.num)"
         
         let url = URL(string: comic.img)!
         let data = try? Data(contentsOf: url)

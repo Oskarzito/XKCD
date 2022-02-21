@@ -14,10 +14,10 @@ protocol CardViewDelegate: AnyObject {
 
 final class CardView: UIView {
     
-    private let imageView: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
+    let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     weak var delegate: CardViewDelegate?
@@ -47,10 +47,6 @@ final class CardView: UIView {
     @objc
     private func didTapView(_ sender: Any) {
         delegate?.didTapCardView(self, image: imageView.image)
-    }
-    
-    func loading() {
-        
     }
     
     func set(image: UIImage) {

@@ -52,3 +52,10 @@ extension UITableView {
         return dequeueReusableCell(withIdentifier: NSStringFromClass(type), for: indexPath) as! Cell
     }
 }
+
+extension UIViewController {
+    func presentShareActivity(for image: UIImage) {
+        let ac = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        present(ac, animated: true)
+    }
+}

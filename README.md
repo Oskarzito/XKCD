@@ -1,9 +1,6 @@
 # XKCD
 iOS app using the XKCD API
 
-The project unfortunately took way longer than expected due to badly timed (and prolonged) sickness :(
-
-
 Deployment target: iOS 15.
 Only "fancy" new tech used is Combine. No SwiftUI or async/await.*
 
